@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+</body>
+    <div style="margin-top: 50px;" class="ui container">
+
+        <h1 class="ui center aligned header">My Travel Experiences</h1>
+
+    </div>
+    <form class="ui form" action="/add" method="post">
+        <div class="field">
+            <label>Place</label>
+            <input type="text" name="title" placeholder="Enter place name..."><br>
+        </div>
+        <!-- <button class="ui blue button" type="submit">Add</button> -->
+        <div class="field">
+            <label>Memories</label>
+            <input type="text" name="summary" placeholder="Your travel history..."><br>
+        </div>
+        <div class="field">
+            <label>Type of Place</label>
+            <input type="text" name="type_of_place" placeholder="Place is famous for..."><br>
+        </div>
+        <!-- <div class="field">
+            <label>Visited On</label>
+            <input type="text" name="visited_on" placeholder="Your travel history..."><br>
+        </div>              -->
+        <div class="field">
+            <label>Expenditure</label>
+            <input type="number" name="expenditure" placeholder="Enter the travel expenses in INR...."><br>
+        </div>                        
+        <button class="ui blue button" type="submit">Add</button>            
+    </form>
+
+    <hr>
+
+    {% for todo in todo_list %}
+    <div class="ui segment">
+        <p class="ui big header">{{todo.id }} . {{ todo.title }} - {{ todo.type_of_place }} | {{ todo.summary }}</p>
+
+        {% if todo.Expenditure == True %}
+        <span class="ui gray label">{{ todo.Expenditure }}</span>
+        {% else %}
+        <span class="ui green label">{{ todo.Expenditure }}</span>
+        {% endif %}
+
+        <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
+        <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
+    </div>
+    {% endfor %}
+    </div>
+</body>
+
+</html>ad
